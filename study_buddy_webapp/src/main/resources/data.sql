@@ -1,7 +1,7 @@
 -- Students
-INSERT INTO STUDENT (id, name, email) VALUES (1, 'Ava Carter', 'ava@clemson.edu');
-INSERT INTO STUDENT (id, name, email) VALUES (2, 'Noah Patel', 'noah@clemson.edu');
-INSERT INTO STUDENT (id, name, email) VALUES (3, 'Liam Chen', 'liam@clemson.edu');
+INSERT INTO STUDENT (name, email) VALUES ('Ava Carter', 'ava@clemson.edu');
+INSERT INTO STUDENT (name, email) VALUES ('Noah Patel', 'noah@clemson.edu');
+INSERT INTO STUDENT (name, email) VALUES ('Liam Chen', 'liam@clemson.edu');
 
 
 -- Courses (ElementCollection table)

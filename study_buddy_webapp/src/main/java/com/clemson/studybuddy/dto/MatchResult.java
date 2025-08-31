@@ -1,53 +1,47 @@
 package com.clemson.studybuddy.dto;
 
-
 import com.clemson.studybuddy.domain.Student;
-import java.util.*;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public final class MatchResult {
-    private final Student student;
-    private final int overlapCount;
-    private final List<OverlapSlot> overlaps;
+public class MatchResult {
+    private Student student;
+    private int overlapCount;
+    private List<OverlapSlot> overlaps = new ArrayList<>();
+
+    public MatchResult() {
+    }
 
     public MatchResult(Student student, int overlapCount, List<OverlapSlot> overlaps) {
         this.student = student;
         this.overlapCount = overlapCount;
-        this.overlaps = overlaps;
+        if (overlaps != null) {
+            this.overlaps = overlaps;
+        }
     }
 
-    public Student student() {
+    public Student getStudent() {
         return student;
     }
 
-    public int overlapCount() {
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public int getOverlapCount() {
         return overlapCount;
     }
 
-    public List<OverlapSlot> overlaps() {
+    public void setOverlapCount(int overlapCount) {
+        this.overlapCount = overlapCount;
+    }
+
+    public List<OverlapSlot> getOverlaps() {
         return overlaps;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        MatchResult that = (MatchResult) obj;
-        return Objects.equals(this.student, that.student) &&
-                this.overlapCount == that.overlapCount &&
-                Objects.equals(this.overlaps, that.overlaps);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(student, overlapCount, overlaps);
-    }
-
-    @Override
-    public String toString() {
-        return "MatchResult[" +
-                "student=" + student + ", " +
-                "overlapCount=" + overlapCount + ", " +
-                "overlaps=" + overlaps + ']';
+    public void setOverlaps(List<OverlapSlot> overlaps) {
+        this.overlaps = overlaps;
     }
 }

@@ -1,51 +1,50 @@
 package com.clemson.studybuddy.web;
 
-
 import com.clemson.studybuddy.domain.Student;
 import com.clemson.studybuddy.repo.StudentRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.*;
-
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
     private final StudentRepository repo;
-    public StudentController(StudentRepository repo){ this.repo = repo; }
 
+    public StudentController(StudentRepository repo) {
+        this.repo = repo;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Student create(@RequestBody Student s){
+    public Student create(@RequestBody Student s) {
         return repo.save(s);
     }
 
-
     @GetMapping("/{id}")
-    public Student get(@PathVariable Long id){ return repo.findById(id).orElseThrow(); }
-
+    public Student get(@PathVariable("id") Long id) {
+        return repo.findById(id).orElseThrow();
+    }
 
     @GetMapping
-    public List<Student> list(@RequestParam(required=false) String course){
+    public List<Student> list(@RequestParam(name = "course", required = false) String course) {
         if (course == null || course.isBlank()) return repo.findAll();
         return repo.findByCourse(course);
     }
 
-
     @PostMapping("/{id}/courses")
-    public Student addCourse(@PathVariable Long id, @RequestParam String course){
+    public Student addCourse(@PathVariable("id") Long id,
+                             @RequestParam("course") String course) {
         Student s = repo.findById(id).orElseThrow();
         s.getCourses().add(course.trim());
         return repo.save(s);
     }
 
-
     @DeleteMapping("/{id}/courses")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeCourse(@PathVariable Long id, @RequestParam String course){
+    public void removeCourse(@PathVariable("id") Long id,
+                             @RequestParam("course") String course) {
         Student s = repo.findById(id).orElseThrow();
         s.getCourses().removeIf(c -> c.equalsIgnoreCase(course));
         repo.save(s);

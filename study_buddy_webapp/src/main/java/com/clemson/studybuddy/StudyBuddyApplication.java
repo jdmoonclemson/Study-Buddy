@@ -1,0 +1,1 @@
+public class StudyBuddyApplication { public static void main(String[] args){} }

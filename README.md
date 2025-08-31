@@ -51,21 +51,6 @@ User: sa
 
 Password: (empty)
 
-🗂️ Project Structure
-study-buddy/
-├─ pom.xml                     # Maven project config
-├─ src/main/java/com/clemson/studybuddy
-│   ├─ StudyBuddyApplication.java   # Main entry point
-│   ├─ domain/                     # JPA entities (Student, Availability, StudySession)
-│   ├─ repo/                       # Spring Data repositories
-│   ├─ service/                    # Matching service logic
-│   └─ web/                        # REST controllers
-├─ src/main/resources
-│   ├─ application.properties      # Config (port, DB, H2 console)
-│   ├─ data.sql                    # Sample seed data
-│   └─ static/                     # Frontend (index.html, app.js)
-└─ src/test/java/...               # Unit tests
-
 🔑 Key Endpoints
 
 All REST APIs are prefixed with /api:

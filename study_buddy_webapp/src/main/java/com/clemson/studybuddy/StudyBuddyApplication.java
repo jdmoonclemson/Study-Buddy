@@ -1,1 +1,13 @@
-public class StudyBuddyApplication { public static void main(String[] args){} }
+package com.clemson.studybuddy;
+
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
+@SpringBootApplication
+public class StudyBuddyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(StudyBuddyApplication.class, args);
+    }
+}
